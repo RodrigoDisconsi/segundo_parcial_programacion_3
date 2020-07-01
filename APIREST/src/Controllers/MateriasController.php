@@ -45,13 +45,22 @@ class MateriasController{
             $response->getBody()->write(json_encode($obj));
         }
         else{
-            // $obj = [
-            //     "Materia" => $materia->materia,
-            //     "Profesor" => $materia->profesor->nombre,
-            //     "Vacantes" => $materia->vacantes,
-            //     "Cuatrimestre" => $materia->cuatrimestre
-            // ];
-            $response->getBody()->write(json_encode($materia));
+            $auxAlumnos = array();
+            foreach ($materia->alumnos as $element) {
+                array_push($auxAlumnos, [
+                    "Nombre" => $element->alumno->nombre,
+                    "Email" => $element->alumno->email,
+                    "legajo" => $element->alumno->legajo
+                ]);
+            }
+            $obj = [
+                "materia" => $materia->materia,
+                "profesor" => $materia->profesor->nombre,
+                "vacantes" => $materia->vacantes,
+                "cuatrimestre" => $materia->cuatrimestre,
+                "alumnos" => $auxAlumnos
+            ];
+            $response->getBody()->write(json_encode($obj));
         }
 
         return $response;
