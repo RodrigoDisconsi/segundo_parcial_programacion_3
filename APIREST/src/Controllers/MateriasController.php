@@ -112,7 +112,7 @@ class MateriasController{
         $materia = Materia::All();
         $rtn = array();
         foreach ($materia as $element) {
-            $cantidadInscriptos = count(Inscripto::where('materia_id', $element->id)->get());
+            $cantidadInscriptos = count($element->alumnos);
             $obj = [
                 "materia" => $element->materia,
                 "vacantes" => $element->vacantes,
