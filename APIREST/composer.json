@@ -1,0 +1,16 @@
+{
+    "name": "rodri/clase7-skeleton",
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.1",
+        "illuminate/database": "^7.15",
+        "illuminate/events": "^7.15",
+        "firebase/php-jwt": "^5.2" 
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\":"src",
+            "Config\\":"config"
+        }
+    }
+}
